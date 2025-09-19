@@ -8,7 +8,7 @@ class Product(models.Model):
     rating = models.IntegerField(validators=[MinValueValidator(1),MaxValueValidator(5)],default=0)
     short_description = models.CharField(max_length=360,null=True)
     is_active = models.BooleanField(default=False)
-    slug = models.SlugField(default="",null=False,db_index=True)
+    slug = models.SlugField(default="",null=False,db_index=True,blank=True)
 
     def save(self,*args,**kwargs):
         self.slug=slugify(self.title)
